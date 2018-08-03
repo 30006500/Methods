@@ -48,5 +48,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Task 2\Task 2.csproj">
+      <Project>{cc0b17b5-ed09-4e07-aeb3-5261a2bab13f}</Project>
+      <Name>Task 2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Task1\Task1.csproj">
+      <Project>{b6c8e083-ce90-4611-8b5a-6d9ad8885cf8}</Project>
+      <Name>Task1</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

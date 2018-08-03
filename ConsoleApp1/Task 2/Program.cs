@@ -6,41 +6,83 @@ using System.Threading.Tasks;
 
 namespace Task_2
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+       public static void Main()
         {
-            int choice = 0;
+            double choice = 0;
+            bool check = true;
             do
             {
+                Console.Clear();
                 Console.WriteLine("Area Calculator");
-                Console.WriteLine("1) Enter Circle Values");
-                Console.WriteLine("2) Calculate Circle Area");
-                Console.WriteLine("3) Enter Square Values");
-                Console.WriteLine("4) Calculate Circle Area");
-                Console.WriteLine("5) Exit Program");
+                Console.WriteLine("1) Calculate Circle Area");
+                Console.WriteLine("2) Calculate Square Area");
+                Console.WriteLine("3) Return to main menu");
                 Console.WriteLine("Please enter the number of your selection");
-                choice = int.Parse(Console.ReadLine());
-                if (choice > 5) Console.WriteLine("{0} is not a valid choice", choice);
-
-                switch (choice)
+                check = double.TryParse(Console.ReadLine(), out choice);
+                if (check == false)
                 {
-                    case 1:
-                        Circle.Values();
-                        break;
-                    case 2:
-                        Circle.Area();
-                        break;
-                    case 3:
-                        Square.Values();
-                        break;
-                    case 4:
-                        Square.Area();
-                        break;
-                    default:
-                        break;
+                    Console.WriteLine("Invalid choice, Please enter a number");
+                    Console.WriteLine("Press enter to continue");
+                    Console.ReadLine();
                 }
-            } while (choice != 5);
+
+                else
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            Circle.Area();
+                            break;
+                        case 2:
+                            Square.Area();
+                            break;
+                        case 3:
+                            break;
+                        default:
+                            Console.WriteLine("Invalid Choice, Please enter a number between 1 and 5");
+                            Console.Clear();
+                            break;
+                    }
+                }
+            } while (choice != 3);
+        }
+    }
+
+    public static class Circle
+    {
+        public static double Values()
+        {
+            Console.WriteLine("Please enter the radius if the circle");
+            double radius = double.Parse(Console.ReadLine());
+            radius = radius * radius;
+            return radius;   
+        }
+        public static void Area()
+        {
+              Console.WriteLine("The area of the circle is {0}", Circle.Values() * 3.14195);
+            Console.WriteLine("");
+            Console.WriteLine("Press enter to continue");
+            Console.ReadLine();
+        }
+    }
+
+    public static class Square
+    {
+        public static double Values()
+        {
+            Console.WriteLine("Please enter the length of one side of the square");
+            double length = double.Parse(Console.ReadLine());
+            length = length * length;
+            return length;
+        }
+        public static void Area()
+        {
+            Console.WriteLine("The area of the square is {0}", Square.Values());
+            Console.WriteLine("");
+            Console.WriteLine("Press enter to continue");
+            Console.ReadLine();
         }
     }
 }
